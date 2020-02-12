@@ -1,0 +1,48 @@
+{
+    "env": {
+        "node": true
+    },
+    "parser": "babel-eslint",
+    "extends": [
+        "airbnb-base",
+        "standard-preact"
+    ],
+    "plugins": [
+        "import"
+    ],
+    "rules": {
+        "no-plusplus": 0,
+        "indent": ["error", 4],
+        "no-prototype-builtins": 0,
+        "max-len": ["error", 120],
+        "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
+        "import/extensions": ["error", "never", { "packages": "always" }],
+        "global-require": "warn",
+        "import/no-dynamic-require": "warn",
+        "strict": 0,
+        "no-console": 0,
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-indent-props": ["error", 4],
+        "quotes": ["error", "single",{ "allowTemplateLiterals": true }],
+        "prefer-destructuring": ["error", { "object": false, "array": false }],
+        "operator-linebreak": 0,
+        "function-paren-newline": ["error", "consistent"]
+    },
+    "globals": {
+        "fetch": false,
+        "poly": false,
+        "document": false,
+        "window": false,
+        "localStorage": false,
+        "history": false,
+        "PubSub": false,
+        "navigator": false,
+        "starprnt": false,
+        "StartWebprnt": false,
+        "isNaN": false,
+        "isFinite": false,
+        "FormData": false,
+        "FileReader": false,
+        "XMLHttpRequest": false
+    }
+}

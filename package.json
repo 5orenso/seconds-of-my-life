@@ -1,0 +1,86 @@
+{
+  "name": "seconds-of-my-life",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.m.js",
+  "source": "components/main/index.js",
+  "scripts": {
+    "test": "NODE_ENV=test jest",
+    "test-watch": "npm run test -- --watch",
+    "start": "if-env NODE_ENV=production && npm run -s serve || PORT=56800 npm run -s dev",
+    "build": "preact build --no-prerender --clean --template src/index.ejs --service-worker false",
+    "serve": "npm run build && preact serve",
+    "dev": "preact watch --template src/index.ejs",
+    "dist": "microbundle --entry src/components/main/index.js",
+    "eslint": "./node_modules/.bin/eslint src/components/**/*.js src/lib/{**/,}/*.js src/*.js",
+    "eslint-watch": "./node_modules/.bin/esw --watch --color --clear src/components/**/*.js src/lib/{**/,}/*.js src/*.js",
+    "install-widget": "bash ./bin/install.sh"
+  },
+  "keywords": [],
+  "author": "Øistein Sørensen <sorenso@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-transform-regenerator": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-config-standard-preact": "^1.1.6",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
+    "eslint-watch": "^5.1.2",
+    "identity-obj-proxy": "^3.0.0",
+    "if-env": "^1.0.0",
+    "jest": "^21.2.1",
+    "microbundle": "^0.6.0",
+    "node-sass": "^4.5.3",
+    "preact-render-to-string": "^3.7.0",
+    "preact-widget-scripts": "^0.6.0",
+    "sass-loader": "^6.0.6"
+  },
+  "dependencies": {
+    "history": "^4.9.0",
+    "linkstate": "^1.1.1",
+    "mobx": "^5.15.0",
+    "mobx-preact": "^3.0.0",
+    "preact": "^8.2.5",
+    "preact-cli": "^2.0.2",
+    "preact-compat": "^3.17.0",
+    "preact-habitat": "^3.1.0",
+    "preact-router": "^2.5.7",
+    "pubsub-js": "^1.7.0"
+  },
+  "jest": {
+    "verbose": true,
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|scss|less)$": "identity-obj-proxy",
+      "^react$": "preact-compat",
+      "^react-dom$": "preact-compat"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ]
+  }
+}
