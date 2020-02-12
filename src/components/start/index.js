@@ -44,9 +44,9 @@ class Start extends Component {
 
     getContent = () => {
         if (REQUIRE_LOGIN && !this.state[STATE.JWT_TOKEN]) {
-            return (<Login />);
+            return (<Login {...this.props} />);
         }
-        return (<Main />);
+        return (<Main {...this.props} />);
     };
 
     render() {

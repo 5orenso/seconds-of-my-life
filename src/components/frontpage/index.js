@@ -1,6 +1,7 @@
 import { h, Component } from 'preact';
 import { observer } from 'mobx-preact';
 import style from './style.css';
+import util from '../../lib/util';
 
 const initialState = {
     timeSpentOn: 'Mobile usage',
@@ -66,7 +67,19 @@ const duration = (seconds, localNames = ['y', 'm', 'w', 'd', 'hr', 'min', 'sec']
 class Frontpage extends Component {
     constructor(props) {
         super(props);
-        this.state = initialState;
+        const inputProps = util.cleanObject({
+            timeSpentOn: props.timeSpentOn,
+            minutesEachDay: props.minutesEachDay,
+            dailySleepHours: props.dailySleepHours,
+            dailyWorkHours: props.dailyWorkHours,
+            dailyCommuteHours: props.dailyCommuteHours,
+            weeklyWorkDays: props.weeklyWorkDays,
+            monthlyWorkDays: props.monthlyWorkDays,
+        });
+        this.state = {
+            ...initialState,
+            ...inputProps,
+        };
     }
 
     setTimeSpentOn(timeSpentOn) {

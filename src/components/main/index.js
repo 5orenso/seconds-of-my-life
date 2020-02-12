@@ -43,10 +43,10 @@ class Main extends Component {
                     <TagList path='/tag' />
                     <TagEdit path='/tag/:tagId' />
                 */}
-                <Frontpage stores={this.stores} default />
+                <Frontpage stores={this.stores} default {...this.props} />
             </Router>);
         }
-        return (<Frontpage stores={this.stores} default />);
+        return (<Frontpage stores={this.stores} default {...this.props} />);
     }
 
     render() {

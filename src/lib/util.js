@@ -387,6 +387,32 @@ class Utilities {
         const randomstring = Math.random().toString(36).slice(-8);
         return randomstring;
     }
+
+    static cleanObject($obj, opt = {}) {
+        const obj = Object.assign({}, $obj);
+        const keys = Object.keys(obj);
+        for (let i = 0; i < keys.length; i += 1) {
+            const idx = keys[i];
+            if (obj.hasOwnProperty(idx)) {
+                if (typeof obj[idx] === 'undefined' || obj[idx] === null) {
+                    delete obj[idx];
+                }
+                if (opt.emptyIsUndefined && obj[idx] === '') {
+                    delete obj[idx];
+                }
+                if (opt.zeroIsUndefined && obj[idx] === 0) {
+                    delete obj[idx];
+                }
+                if (opt.zeroStringIsUndefined && obj[idx] === '0') {
+                    delete obj[idx];
+                }
+                if (opt.falseIsUndefined && obj[idx] === false) {
+                    delete obj[idx];
+                }
+            }
+        }
+        return obj;
+    }
 }
 
 export default Utilities;
